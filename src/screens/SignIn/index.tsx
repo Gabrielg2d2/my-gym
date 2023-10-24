@@ -1,9 +1,16 @@
-import { Center, Text } from "native-base";
+import { Image, VStack } from "native-base";
+
+import BackGroundImg from "@assets/background.png";
 
 export function SignIn() {
   return (
-    <Center flex={1}>
-      <Text>SignIn</Text>
-    </Center>
+    <VStack flex={1} bg="gray.700">
+      <Image
+        source={BackGroundImg}
+        alt="people training"
+        resizeMode="contain"
+        position="absolute"
+      />
+    </VStack>
   );
 }
