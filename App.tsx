@@ -6,6 +6,7 @@ import {
   Roboto_700Bold,
   useFonts,
 } from "@expo-google-fonts/roboto";
+import { NativeBaseProvider } from "native-base";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -14,13 +15,13 @@ export default function App() {
   });
 
   return (
-    <View style={{ flex: 1 }}>
+    <NativeBaseProvider>
       {!fontsLoaded ? <View /> : <Home />}
       <StatusBar
         translucent
         backgroundColor="transparent"
         barStyle="light-content"
       />
-    </View>
+    </NativeBaseProvider>
   );
 }
