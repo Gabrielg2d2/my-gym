@@ -1,6 +1,7 @@
 import Home from "@screens/Home";
-import { StatusBar, View } from "react-native";
+import { StatusBar } from "react-native";
 
+import { Loading } from "@components/Loading";
 import {
   Roboto_400Regular,
   Roboto_700Bold,
@@ -16,7 +17,7 @@ export default function App() {
 
   return (
     <NativeBaseProvider>
-      {!fontsLoaded ? <View /> : <Home />}
+      {fontsLoaded ? <Loading /> : <Home />}
       <StatusBar
         translucent
         backgroundColor="transparent"
