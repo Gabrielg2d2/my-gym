@@ -1,6 +1,5 @@
 import Home from "@screens/Home";
-import { StatusBar } from "expo-status-bar";
-import { View } from "react-native";
+import { StatusBar, View } from "react-native";
 
 import {
   Roboto_400Regular,
@@ -17,7 +16,11 @@ export default function App() {
   return (
     <View style={{ flex: 1 }}>
       {!fontsLoaded ? <View /> : <Home />}
-      <StatusBar style="auto" />
+      <StatusBar
+        translucent
+        backgroundColor="transparent"
+        barStyle="light-content"
+      />
     </View>
   );
 }
