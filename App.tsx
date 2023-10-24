@@ -17,7 +17,7 @@ export default function App() {
 
   return (
     <NativeBaseProvider>
-      {fontsLoaded ? <Loading /> : <Home />}
+      {!fontsLoaded ? <Loading /> : <Home />}
       <StatusBar
         translucent
         backgroundColor="transparent"

@@ -1,16 +1,10 @@
-import { Text, View } from "react-native";
+import { Center } from "native-base";
+import { Text } from "react-native";
 
 export default function Home() {
   return (
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: "#fff",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
+    <Center flex={1}>
       <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
+    </Center>
   );
 }
