@@ -8,6 +8,7 @@ import {
   useFonts,
 } from "@expo-google-fonts/roboto";
 import { NativeBaseProvider } from "native-base";
+import { THEME } from "./src/theme";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -16,7 +17,7 @@ export default function App() {
   });
 
   return (
-    <NativeBaseProvider>
+    <NativeBaseProvider theme={THEME}>
       {!fontsLoaded ? <Loading /> : <Home />}
       <StatusBar
         translucent
