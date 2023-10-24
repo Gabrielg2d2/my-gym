@@ -1,6 +1,6 @@
-import { Image, VStack } from "native-base";
-
 import BackGroundImg from "@assets/background.png";
+import LogoSVG from "@assets/logo.svg";
+import { Image, VStack } from "native-base";
 
 export function SignIn() {
   return (
@@ -11,6 +11,8 @@ export function SignIn() {
         resizeMode="contain"
         position="absolute"
       />
+
+      <LogoSVG />
     </VStack>
   );
 }
