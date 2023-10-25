@@ -34,6 +34,7 @@ export function SignUp() {
         >
           <Image
             source={BackGroundImg}
+            defaultSource={BackGroundImg}
             alt="people training"
             resizeMode="contain"
             position="absolute"
@@ -69,6 +70,7 @@ export function SignUp() {
 
             <Button text="Criar e acessar" />
             <Button
+              mt="auto"
               text="Voltar para o login"
               variant="outline"
               onPress={navigateSignIn}
