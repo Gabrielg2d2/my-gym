@@ -1,9 +1,5 @@
-import { Center, Text } from "native-base";
+import { HomeTemplate } from "./template";
 
 export function Home() {
-  return (
-    <Center flex={1}>
-      <Text>Home</Text>
-    </Center>
-  );
+  return <HomeTemplate />;
 }
