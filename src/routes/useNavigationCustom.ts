@@ -1,7 +1,10 @@
 import { useNavigation } from "@react-navigation/native";
+import { IAuthNavigationRoutesProps } from "./auth.routes";
+
+type IUseNavigationCustom = IAuthNavigationRoutesProps;
 
 export const useNavigationCustom = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<IUseNavigationCustom>();
 
   function goBack() {
     navigation.goBack();

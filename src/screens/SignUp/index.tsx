@@ -2,6 +2,7 @@ import BackGroundImg from "@assets/background.png";
 import LogoSVG from "@assets/logo.svg";
 import { Button } from "@components/Button";
 import { Input } from "@components/Input";
+import { useNavigationCustom } from "@routes/useNavigationCustom";
 import {
   Center,
   Heading,
@@ -15,6 +16,7 @@ import React from "react";
 import { Keyboard, Platform, TouchableWithoutFeedback } from "react-native";
 
 export function SignUp() {
+  const { navigateSignIn } = useNavigationCustom();
   return (
     <KeyboardAvoidingView
       h={{
@@ -66,7 +68,11 @@ export function SignUp() {
             <Input placeholder="Senha" secureTextEntry />
 
             <Button text="Criar e acessar" />
-            <Button text="Voltar para o login" variant="outline" />
+            <Button
+              text="Voltar para o login"
+              variant="outline"
+              onPress={navigateSignIn}
+            />
           </VStack>
         </ScrollView>
       </TouchableWithoutFeedback>
