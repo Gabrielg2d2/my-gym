@@ -39,16 +39,16 @@ export function SignIn() {
                 Treine sua mente e seu corpo
               </Text>
             </Center>
-            <Center>
-              <Heading
-                color="gray.100"
-                fontSize="xl"
-                fontFamily="heading"
-                mb={6}
-              >
-                Acesse sua conta
-              </Heading>
-            </Center>
+
+            <Heading
+              color="gray.100"
+              fontSize="xl"
+              fontFamily="heading"
+              mb={6}
+              textAlign="center"
+            >
+              Acesse sua conta
+            </Heading>
 
             <Input
               placeholder="E-mail"
@@ -57,6 +57,16 @@ export function SignIn() {
             />
             <Input placeholder="Senha" secureTextEntry />
             <Button text="Acessar" />
+
+            <Text
+              color="gray.100"
+              textAlign="center"
+              fontSize="sm"
+              fontFamily="body"
+              my={3}
+            >
+              Ainda não tem acesso?
+            </Text>
 
             <Button text="Criar Conta" variant="outline" />
           </VStack>
