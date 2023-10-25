@@ -29,7 +29,6 @@ export function SignUp() {
           contentContainerStyle={{
             flexGrow: 1,
           }}
-          bg="gray.700"
         >
           <Image
             source={BackGroundImg}

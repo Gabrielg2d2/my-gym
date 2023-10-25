@@ -15,11 +15,6 @@ export const useNavigationCustom = () => {
     navigation.navigate("signUp");
   }
 
-  type NavigateToPlayersProps = {
-    groupName: string;
-    groupId: string;
-  };
-
   return {
     goBack,
     navigateSignIn,

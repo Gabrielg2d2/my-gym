@@ -1,10 +1,17 @@
 import { NavigationContainer } from "@react-navigation/native";
+import { useTheme } from "native-base";
+import { SafeAreaView } from "react-native-safe-area-context";
+
 import { AuthRoutes } from "./auth.routes";
 
 export function Routes() {
+  const { colors } = useTheme();
+
   return (
-    <NavigationContainer>
-      <AuthRoutes />
-    </NavigationContainer>
+    <SafeAreaView style={{ flex: 1, backgroundColor: colors.gray[700] }}>
+      <NavigationContainer>
+        <AuthRoutes />
+      </NavigationContainer>
+    </SafeAreaView>
   );
 }
