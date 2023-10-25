@@ -31,18 +31,25 @@ export function SignIn() {
             resizeMode="contain"
             position="absolute"
           />
-          <Center my={24}>
-            <LogoSVG />
-            <Text fontSize="sm" fontWeight="bold" color="gray.100">
-              Treine sua mente e seu corpo
-            </Text>
-          </Center>
-          <Center my={24}>
-            <Heading color="gray.100" fontSize="xl" fontFamily="heading" mb={6}>
-              Acesse sua conta
-            </Heading>
-          </Center>
-          <VStack flex={1} space={4} mb={6} px={10}>
+
+          <VStack flex={1} space={4} px={10}>
+            <Center my={24}>
+              <LogoSVG />
+              <Text fontSize="sm" fontWeight="bold" color="gray.100">
+                Treine sua mente e seu corpo
+              </Text>
+            </Center>
+            <Center>
+              <Heading
+                color="gray.100"
+                fontSize="xl"
+                fontFamily="heading"
+                mb={6}
+              >
+                Acesse sua conta
+              </Heading>
+            </Center>
+
             <Input
               placeholder="E-mail"
               keyboardType="email-address"
@@ -50,9 +57,7 @@ export function SignIn() {
             />
             <Input placeholder="Senha" secureTextEntry />
             <Button text="Acessar" />
-          </VStack>
 
-          <VStack flex={1} space={4} mb={6} px={10}>
             <Button text="Criar Conta" variant="outline" />
           </VStack>
         </ScrollView>
