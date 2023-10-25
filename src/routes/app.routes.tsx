@@ -7,7 +7,6 @@ import { History } from "@screens/History";
 import { Home } from "@screens/Home";
 import { Profile } from "@screens/Profile";
 
-import ExerciseSVG from "@assets/exercise.svg";
 import HistorySVG from "@assets/history.svg";
 import HomeSVG from "@assets/home.svg";
 import ProfileSVG from "@assets/profile.svg";
@@ -80,9 +79,7 @@ export function AppRoutes() {
         name="exercise"
         component={Exercise}
         options={{
-          tabBarIcon: ({ color }) => (
-            <ExerciseSVG fill={color} width={iconSize} height={iconSize} />
-          ),
+          tabBarButton: () => null,
         }}
       />
     </Navigator>
