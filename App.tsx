@@ -6,7 +6,7 @@ import {
   Roboto_700Bold,
   useFonts,
 } from "@expo-google-fonts/roboto";
-import { SignIn } from "@screens/SignIn";
+import { Routes } from "@routes/index";
 import { NativeBaseProvider } from "native-base";
 import { THEME } from "./src/theme";
 
@@ -18,7 +18,7 @@ export default function App() {
 
   return (
     <NativeBaseProvider theme={THEME}>
-      {!fontsLoaded ? <Loading /> : <SignIn />}
+      {!fontsLoaded ? <Loading /> : <Routes />}
       <StatusBar
         translucent
         backgroundColor="transparent"
