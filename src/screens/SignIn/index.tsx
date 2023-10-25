@@ -51,6 +51,10 @@ export function SignIn() {
             <Input placeholder="Senha" secureTextEntry />
             <Button text="Acessar" />
           </VStack>
+
+          <VStack flex={1} space={4} mb={6} px={10}>
+            <Button text="Criar Conta" variant="outline" />
+          </VStack>
         </ScrollView>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>

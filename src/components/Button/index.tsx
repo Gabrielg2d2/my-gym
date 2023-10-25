@@ -4,17 +4,23 @@ type ButtonProps = IButtonProps & {
   text: string;
 };
 
-export const Button = ({ text, ...props }: ButtonProps) => {
+export const Button = ({ text, variant, ...props }: ButtonProps) => {
   return (
     <ButtonNative
       h={14}
-      bg="green.700"
+      bg={variant === "outline" ? "transparent" : "green.700"}
+      borderWidth={1}
+      borderColor={variant === "outline" ? "green.500" : "transparent"}
       _pressed={{
-        bg: "green.500",
+        bg: variant === "outline" ? "gray.500" : "green.500",
       }}
       {...props}
     >
-      <Text color="white" fontFamily="heading" fontSize="md">
+      <Text
+        color={variant === "outline" ? "green.500" : "white"}
+        fontFamily="heading"
+        fontSize="md"
+      >
         {text}
       </Text>
     </ButtonNative>
