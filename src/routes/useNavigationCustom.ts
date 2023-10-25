@@ -6,7 +6,7 @@ type IUseNavigationCustom = IAuthNavigationRoutesProps;
 export const useNavigationCustom = () => {
   const navigation = useNavigation<IUseNavigationCustom>();
 
-  function goBack() {
+  function navigateGoBack() {
     navigation.goBack();
   }
 
@@ -19,7 +19,7 @@ export const useNavigationCustom = () => {
   }
 
   return {
-    goBack,
+    navigateGoBack,
     navigateSignIn,
     navigateSignUp,
   };
