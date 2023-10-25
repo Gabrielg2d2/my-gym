@@ -32,7 +32,7 @@ export function SignIn() {
             position="absolute"
           />
 
-          <VStack flex={1} space={4} px={10}>
+          <VStack flex={1} space={4} px={10} pb={16}>
             <Center my={24}>
               <LogoSVG />
               <Text fontSize="sm" fontWeight="bold" color="gray.100">
