@@ -2,7 +2,7 @@ import BackGroundImg from "@assets/background.png";
 import LogoSVG from "@assets/logo.svg";
 import { Button } from "@components/Button";
 import { Input } from "@components/Input";
-import { useNavigationCustom } from "@routes/useNavigationCustom";
+import { useNavigationAuth } from "@routes/useNavigationAuth";
 import {
   Center,
   Heading,
@@ -16,7 +16,7 @@ import React from "react";
 import { Keyboard, Platform, TouchableWithoutFeedback } from "react-native";
 
 export function SignIn() {
-  const { navigateSignUp } = useNavigationCustom();
+  const { navigateSignUp } = useNavigationAuth();
 
   return (
     <KeyboardAvoidingView

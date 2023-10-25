@@ -1,14 +1,10 @@
 import { useNavigation } from "@react-navigation/native";
 import { IAuthNavigationRoutesProps } from "./auth.routes";
 
-type IUseNavigationCustom = IAuthNavigationRoutesProps;
+type IUseNavigationAuthProps = IAuthNavigationRoutesProps;
 
-export const useNavigationCustom = () => {
-  const navigation = useNavigation<IUseNavigationCustom>();
-
-  function navigateGoBack() {
-    navigation.goBack();
-  }
+export const useNavigationAuth = () => {
+  const navigation = useNavigation<IUseNavigationAuthProps>();
 
   function navigateSignIn() {
     navigation.navigate("signIn");
@@ -19,7 +15,6 @@ export const useNavigationCustom = () => {
   }
 
   return {
-    navigateGoBack,
     navigateSignIn,
     navigateSignUp,
   };
