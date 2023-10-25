@@ -12,6 +12,7 @@ import HistorySVG from "@assets/history.svg";
 import HomeSVG from "@assets/home.svg";
 import ProfileSVG from "@assets/profile.svg";
 import { useTheme } from "native-base";
+import { Platform } from "react-native";
 
 type IAppRoutes = {
   home: undefined;
@@ -28,16 +29,21 @@ export function AppRoutes() {
   const { sizes, colors } = useTheme();
 
   const iconSize = sizes[6];
-  const colorActiveIcon = colors.green[500];
-  const colorInactiveIcon = colors.gray[200];
 
   return (
     <Navigator
       screenOptions={{
         headerShown: false,
         tabBarShowLabel: false,
-        tabBarActiveTintColor: colorActiveIcon,
-        tabBarInactiveTintColor: colorInactiveIcon,
+        tabBarActiveTintColor: colors.green[500],
+        tabBarInactiveTintColor: colors.gray[200],
+        tabBarStyle: {
+          backgroundColor: colors.gray[600],
+          borderTopWidth: 0,
+          height: Platform.OS === "ios" ? 96 : "auto",
+          paddingBottom: sizes[10],
+          paddingTop: sizes[6],
+        },
       }}
     >
       <Screen
