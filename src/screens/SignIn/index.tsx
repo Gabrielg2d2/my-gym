@@ -24,7 +24,13 @@ export function SignIn() {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <ScrollView flex={1} bg="gray.700">
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{
+            flexGrow: 1,
+          }}
+          bg="gray.700"
+        >
           <Image
             source={BackGroundImg}
             alt="people training"
