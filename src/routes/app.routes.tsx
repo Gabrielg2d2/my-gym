@@ -29,6 +29,7 @@ export function AppRoutes() {
 
   const iconSize = sizes[6];
   const colorActiveIcon = colors.green[500];
+  const colorInactiveIcon = colors.gray[200];
 
   return (
     <Navigator
@@ -36,6 +37,7 @@ export function AppRoutes() {
         headerShown: false,
         tabBarShowLabel: false,
         tabBarActiveTintColor: colorActiveIcon,
+        tabBarInactiveTintColor: colorInactiveIcon,
       }}
     >
       <Screen
