@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import { IAuthNavigationRoutesProps } from "./interfaceAuthRoutes";
+import { IAuthNavigationRoutesProps } from "./auth.routes";
 
 type IUseNavigationCustom = IAuthNavigationRoutesProps;
 
