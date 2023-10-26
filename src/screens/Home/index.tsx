@@ -1,5 +1,11 @@
-import { HomeTemplate } from "./template";
+import { HomeTemplate, IHomeTemplateProps } from "./template";
 
 export function Home() {
-  return <HomeTemplate />;
+  const propsTemplate: IHomeTemplateProps = {
+    header: {
+      signOut: () => {},
+    },
+  };
+
+  return <HomeTemplate {...propsTemplate} />;
 }

@@ -1,10 +1,14 @@
 import { VStack } from "native-base";
-import { Header } from "../components/Header";
+import { Header, IHeaderProps } from "../components/Header";
 
-export function HomeTemplate() {
+export type IHomeTemplateProps = {
+  header: IHeaderProps;
+};
+
+export function HomeTemplate(props: IHomeTemplateProps) {
   return (
-    <VStack flex={1} bg="gray.700">
-      <Header />
+    <VStack flex={1} bg="bgDefault">
+      <Header {...props.header} />
     </VStack>
   );
 }
