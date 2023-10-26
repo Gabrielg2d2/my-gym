@@ -55,7 +55,7 @@ export function ListGroups(props: IListGroupsProps) {
       renderItem={({ item }) => (
         <Group
           name={item}
-          isActive={item === activeGroup}
+          isActive={item.toUpperCase() === activeGroup.toUpperCase()}
           onPress={() => handlePressGroup(item)}
           mr={2}
         />
