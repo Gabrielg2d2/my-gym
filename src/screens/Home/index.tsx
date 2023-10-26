@@ -10,7 +10,6 @@ export function Home() {
     "Ombros",
   ]);
   const [currentGroup, setCurrentGroup] = useState<string>(listGroup[0]);
-  console.log("currentGroup: ", currentGroup);
 
   const propsTemplate: IHomeTemplateProps = {
     header: {
