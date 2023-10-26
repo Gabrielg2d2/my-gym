@@ -1,9 +1,24 @@
+import { UserPhoto } from "@components/UserPhoto";
 import { HStack, Heading, Text, VStack } from "native-base";
 
 export function Header() {
   return (
-    <HStack bg="gray.600" pt={16} pb={5} px={8} alignItems="center">
-      <VStack space={1}>
+    <HStack
+      alignItems="center"
+      bg="gray.600"
+      pt={16}
+      pb={5}
+      px={8}
+      borderWidth={1}
+      borderColor={"gray.100"}
+    >
+      <UserPhoto
+        source={{
+          uri: "https://github.com/Gabrielg2d2.png",
+        }}
+      />
+
+      <VStack space={1} ml={2}>
         <Text color="gray.100" fontSize="md">
           Olá
         </Text>
