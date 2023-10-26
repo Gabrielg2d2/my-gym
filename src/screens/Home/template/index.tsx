@@ -1,11 +1,15 @@
 import { HStack, Heading, Text, VStack } from "native-base";
-import { ExerciseCard } from "./components/ExerciseCard";
 import { Header, IHeaderProps } from "./components/Header";
+import {
+  IListExerciseCardProps,
+  ListExerciseCard,
+} from "./components/ListExerciseCard";
 import { IListGroupsProps, ListGroups } from "./components/ListGroup";
 
 export type IHomeTemplateProps = {
   header: IHeaderProps;
   groups: IListGroupsProps;
+  exercises: IListExerciseCardProps;
 };
 
 export function HomeTemplate(props: IHomeTemplateProps) {
@@ -18,7 +22,7 @@ export function HomeTemplate(props: IHomeTemplateProps) {
       </HStack>
 
       <VStack flex={1} px={8}>
-        <HStack justifyContent="space-between">
+        <HStack justifyContent="space-between" my={4}>
           <Heading color="gray.200" fontSize="md">
             Exercícios
           </Heading>
@@ -28,7 +32,7 @@ export function HomeTemplate(props: IHomeTemplateProps) {
           </Text>
         </HStack>
 
-        <ExerciseCard />
+        <ListExerciseCard {...props.exercises} />
       </VStack>
     </VStack>
   );
