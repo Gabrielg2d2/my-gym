@@ -1,10 +1,10 @@
 import { HStack, VStack } from "native-base";
-import { Group, IGroupProps } from "../components/Group";
 import { Header, IHeaderProps } from "../components/Header";
+import { IListGroupsProps, ListGroups } from "../components/ListGroup";
 
 export type IHomeTemplateProps = {
   header: IHeaderProps;
-  groups: IGroupProps;
+  groups: IListGroupsProps;
 };
 
 export function HomeTemplate(props: IHomeTemplateProps) {
@@ -12,10 +12,8 @@ export function HomeTemplate(props: IHomeTemplateProps) {
     <VStack flex={1} bg="bgDefault">
       <Header {...props.header} />
 
-      <HStack space={2} m={4}>
-        <Group {...props.groups} />
-        <Group {...props.groups} />
-        <Group {...props.groups} />
+      <HStack m={4}>
+        <ListGroups {...props.groups} />
       </HStack>
     </VStack>
   );
