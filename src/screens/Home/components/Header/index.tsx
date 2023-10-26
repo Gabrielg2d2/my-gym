@@ -1,7 +1,13 @@
 import { UserPhoto } from "@components/UserPhoto";
-import { HStack, Heading, Text, VStack } from "native-base";
+import { MaterialIcons } from "@expo/vector-icons";
+import { HStack, Heading, Icon, Text, VStack } from "native-base";
+import { TouchableOpacity } from "react-native";
 
-export function Header() {
+export type IHeaderProps = {
+  signOut: () => void;
+};
+
+export function Header({ signOut }: IHeaderProps) {
   return (
     <HStack alignItems="center" bg="gray.600" pt={16} pb={5} px={8}>
       <UserPhoto
@@ -10,7 +16,7 @@ export function Header() {
         }}
       />
 
-      <VStack space={1} ml={2}>
+      <VStack flex={1} space={1} ml={2}>
         <Text color="gray.100" fontSize="md">
           Olá
         </Text>
@@ -18,6 +24,10 @@ export function Header() {
           Gabs
         </Heading>
       </VStack>
+
+      <TouchableOpacity onPress={signOut}>
+        <Icon as={MaterialIcons} name="logout" size={7} color="gray.200" />
+      </TouchableOpacity>
     </HStack>
   );
 }
