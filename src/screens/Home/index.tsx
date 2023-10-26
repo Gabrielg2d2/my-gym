@@ -5,6 +5,9 @@ export function Home() {
     header: {
       signOut: () => {},
     },
+    groups: {
+      name: "Costas",
+    },
   };
 
   return <HomeTemplate {...propsTemplate} />;
