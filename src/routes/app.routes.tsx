@@ -10,6 +10,7 @@ import { Profile } from "@screens/Profile";
 import HistorySVG from "@assets/history.svg";
 import HomeSVG from "@assets/home.svg";
 import ProfileSVG from "@assets/profile.svg";
+
 import { useTheme } from "native-base";
 import { Platform } from "react-native";
 
