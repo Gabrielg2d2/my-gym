@@ -1,14 +1,28 @@
-import { VStack } from "native-base";
-import { HistoryCard } from "./components/HistoryCard";
-import { ScreenHeader } from "./components/ScreenHeader";
+import { useState } from "react";
+import { HistoryTemplate, IHistoryTemplateProps } from "./template";
+import { IHistoryCardProps } from "./template/components/HistoryCard";
 
-type IHistoryProps = {};
-
-export function History(props: IHistoryProps) {
-  return (
-    <VStack flex={1} bg="bgDefault">
-      <ScreenHeader title="Histórico de Exercícios" />
-      <HistoryCard />
-    </VStack>
+export function History() {
+  const [listCardsHistory, setListCardsHistory] = useState<IHistoryCardProps[]>(
+    [
+      {
+        exerciseName: "Puxada lateral",
+        muscleGroupName: "Costas",
+        runtime: "9:56",
+      },
+      {
+        exerciseName: "Puxada frontal",
+        muscleGroupName: "Costas",
+        runtime: "6:00",
+      },
+    ]
   );
+
+  const propsTemplate: IHistoryTemplateProps = {
+    listCards: {
+      data: listCardsHistory,
+    },
+  };
+
+  return <HistoryTemplate {...propsTemplate} />;
 }

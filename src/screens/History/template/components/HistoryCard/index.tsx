@@ -1,12 +1,12 @@
-import { HStack, Heading, Text, VStack } from "native-base";
+import { FlatList, HStack, Heading, Text, VStack } from "native-base";
 
-type IHistoryCardProps = {
+export type IHistoryCardProps = {
   muscleGroupName: string;
   exerciseName: string;
   runtime: string;
 };
 
-export function HistoryCard({
+function HistoryCard({
   muscleGroupName,
   exerciseName,
   runtime,
@@ -21,7 +21,7 @@ export function HistoryCard({
       rounded="md"
       alignItems="center"
     >
-      <VStack mr={5}>
+      <VStack mr={5} flex={1}>
         <Heading
           color="white"
           fontSize="md"
@@ -40,5 +40,20 @@ export function HistoryCard({
         {runtime}
       </Text>
     </HStack>
+  );
+}
+
+export type IListCardsHistory = {
+  data: IHistoryCardProps[];
+};
+
+export function ListHistoryCard({ data }: IListCardsHistory) {
+  return (
+    <FlatList
+      data={data}
+      keyExtractor={(item) => item.exerciseName}
+      renderItem={({ item }) => <HistoryCard {...item} />}
+      showsVerticalScrollIndicator={false}
+    />
   );
 }
