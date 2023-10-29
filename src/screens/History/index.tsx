@@ -6,14 +6,39 @@ export function History() {
   const [listCardsHistory, setListCardsHistory] = useState<IHistoryCardProps[]>(
     [
       {
-        exerciseName: "Puxada lateral",
-        muscleGroupName: "Costas",
-        runtime: "9:56",
+        title: "25/10/2023",
+        data: [
+          {
+            exerciseName: "Puxada lateral",
+            muscleGroupName: "Costas",
+            runtime: "9:56",
+          },
+          {
+            exerciseName: "Puxada frontal",
+            muscleGroupName: "Costas",
+            runtime: "9:56",
+          },
+        ],
       },
       {
-        exerciseName: "Puxada frontal",
-        muscleGroupName: "Costas",
-        runtime: "6:00",
+        title: "24/10/2023",
+        data: [
+          {
+            exerciseName: "Puxada frontal",
+            muscleGroupName: "Costas",
+            runtime: "9:56",
+          },
+        ],
+      },
+      {
+        title: "23/10/2023",
+        data: [
+          {
+            exerciseName: "Puxada frontal",
+            muscleGroupName: "Costas",
+            runtime: "9:56",
+          },
+        ],
       },
     ]
   );
