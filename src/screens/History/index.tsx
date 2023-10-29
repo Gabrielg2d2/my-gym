@@ -1,10 +1,14 @@
 import { VStack } from "native-base";
+import { HistoryCard } from "./components/HistoryCard";
 import { ScreenHeader } from "./components/ScreenHeader";
 
-export function History() {
+type IHistoryProps = {};
+
+export function History(props: IHistoryProps) {
   return (
-    <VStack flex={1}>
+    <VStack flex={1} bg="bgDefault">
       <ScreenHeader title="Histórico de Exercícios" />
+      <HistoryCard />
     </VStack>
   );
 }
