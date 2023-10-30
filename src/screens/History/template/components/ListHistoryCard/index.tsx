@@ -65,6 +65,15 @@ export function ListHistoryCard({ data }: IListCardsHistory) {
           {title}
         </Heading>
       )}
+      contentContainerStyle={{ flexGrow: 1 }}
+      ListEmptyComponent={() => (
+        <VStack flex={1} justifyContent="center">
+          <Text color="gray.100" textAlign="center" mt={10} fontSize="md">
+            Nenhum exercício registrado ainda. {"\n"}
+            Vamos começar?
+          </Text>
+        </VStack>
+      )}
     />
   );
 }

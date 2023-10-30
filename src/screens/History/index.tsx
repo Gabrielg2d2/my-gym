@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { HistoryTemplate, IHistoryTemplateProps } from "./template";
-import { IHistoryCardProps } from "./template/components/HistoryCard";
+import { IHistoryCardProps } from "./template/components/ListHistoryCard";
 
 export function History() {
   const [listCardsHistory, setListCardsHistory] = useState<IHistoryCardProps[]>(

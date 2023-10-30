@@ -1,5 +1,8 @@
 import { HStack, VStack } from "native-base";
-import { IListCardsHistory, ListHistoryCard } from "./components/HistoryCard";
+import {
+  IListCardsHistory,
+  ListHistoryCard,
+} from "./components/ListHistoryCard";
 import { ScreenHeader } from "./components/ScreenHeader";
 
 export type IHistoryTemplateProps = {
