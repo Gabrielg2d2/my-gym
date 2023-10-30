@@ -64,6 +64,7 @@ function ExerciseCard({
 
 export type IListExerciseCardProps = {
   data: CardExerciseProps[];
+  navigation: () => void;
 };
 
 export function ListExerciseCard(props: IListExerciseCardProps) {
@@ -76,6 +77,7 @@ export function ListExerciseCard(props: IListExerciseCardProps) {
           series={item.series}
           repetitions={item.repetitions}
           imageExercise={item.imageExercise}
+          onPress={() => props.navigation()}
         />
       )}
       keyExtractor={(item) => item.nameExercise}

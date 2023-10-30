@@ -1,3 +1,4 @@
+import { useNavigationApp } from "@routes/useNavigationApp";
 import { useState } from "react";
 import { HomeTemplate, IHomeTemplateProps } from "./template";
 import { CardExerciseProps } from "./template/components/ListExerciseCard";
@@ -55,6 +56,7 @@ export function Home() {
     "Ombros",
   ]);
   const [currentGroup, setCurrentGroup] = useState<string>(listGroup[0]);
+  const { navigateExercise } = useNavigationApp();
 
   const propsTemplate: IHomeTemplateProps = {
     header: {
@@ -66,6 +68,7 @@ export function Home() {
     },
     exercises: {
       data: listExercise,
+      navigation: () => navigateExercise(),
     },
   };
 
