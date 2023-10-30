@@ -1,9 +1,7 @@
-import { Center, Text } from "native-base";
+import { IProfileTemplateProps, ProfileTemplate } from "./template";
 
 export function Profile() {
-  return (
-    <Center flex={1}>
-      <Text>Profile</Text>
-    </Center>
-  );
+  const propsTemplate: IProfileTemplateProps = {};
+
+  return <ProfileTemplate {...propsTemplate} />;
 }
