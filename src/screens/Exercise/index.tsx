@@ -1,9 +1,7 @@
-import { Center, Text } from "native-base";
+import { ExerciseTemplate } from "./template";
 
 export function Exercise() {
-  return (
-    <Center flex={1}>
-      <Text>Exercise</Text>
-    </Center>
-  );
+  const propsTemplate = {};
+
+  return <ExerciseTemplate {...propsTemplate} />;
 }
