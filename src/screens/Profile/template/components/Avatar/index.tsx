@@ -10,33 +10,25 @@ type IAvatarProps = {
 const PHOTO_SIZE = 33;
 
 export function Avatar(props: IAvatarProps) {
-  if (!props.urlAvatarUser) {
-    return (
-      <Skeleton
-        size={PHOTO_SIZE}
-        rounded="full"
-        startColor="gray.400"
-        endColor="gray.300"
-      />
-    );
-  }
-
   return (
     <Center mt={6} px={10}>
-      <UserPhoto
-        source={{
-          uri: props.urlAvatarUser,
-        }}
-        size={PHOTO_SIZE}
-      />
+      {props.urlAvatarUser ? (
+        <UserPhoto
+          source={{
+            uri: props.urlAvatarUser,
+          }}
+          size={PHOTO_SIZE}
+        />
+      ) : (
+        <Skeleton
+          size={PHOTO_SIZE}
+          rounded="full"
+          startColor="gray.400"
+          endColor="gray.300"
+        />
+      )}
       <TouchableOpacity onPress={props.handleEditPhoto}>
-        <Text
-          mt={2}
-          mb={8}
-          color="green.500"
-          fontSize="lg"
-          fontFamily="heading"
-        >
+        <Text mt={2} color="green.500" fontSize="lg" fontFamily="heading">
           Alterar foto
         </Text>
       </TouchableOpacity>
