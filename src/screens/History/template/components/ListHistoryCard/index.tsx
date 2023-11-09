@@ -32,7 +32,7 @@ function HistoryCard({ muscleGroupName, exerciseName, runtime }: ICardProps) {
           {muscleGroupName}
         </Heading>
 
-        <Text color="gray.100" fontSize="lg" numberOfLines={1}>
+        <Text color="gray.100" fontSize="lg" flexShrink={1}>
           {exerciseName}
         </Text>
       </VStack>
