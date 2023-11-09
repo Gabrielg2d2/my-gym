@@ -6,6 +6,10 @@ type IUseNavigationApp = IAppNavigationRoutesProps;
 export const useNavigationApp = () => {
   const navigation = useNavigation<IUseNavigationApp>();
 
+  function navigateGoBack() {
+    navigation.goBack();
+  }
+
   function navigateHome() {
     navigation.navigate("home");
   }
@@ -23,6 +27,7 @@ export const useNavigationApp = () => {
   }
 
   return {
+    navigateGoBack,
     navigateHome,
     navigateExercise,
     navigateHistory,

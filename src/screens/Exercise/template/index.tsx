@@ -1,13 +1,17 @@
-import { ScreenHeader } from "@components/ScreenHeader";
-import { Text, VStack } from "native-base";
+import { VStack } from "native-base";
+import { Header } from "./components/Header";
 
-type IExerciseTemplateProps = {};
+export type IExerciseTemplateProps = {
+  header: {
+    navigate: () => void;
+    nameGroup: string;
+  };
+};
 
 export function ExerciseTemplate(props: IExerciseTemplateProps) {
   return (
     <VStack flex={1} bg="bgDefault">
-      <ScreenHeader title="Exercício" />
-      <Text color="white">Exercise</Text>
+      <Header {...props.header} />
     </VStack>
   );
 }
