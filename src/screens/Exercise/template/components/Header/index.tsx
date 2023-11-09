@@ -11,7 +11,7 @@ type IHeaderProps = {
 
 export function Header(props: IHeaderProps) {
   return (
-    <VStack flex={1}>
+    <VStack>
       <VStack px={8} pt={12} pb={8} bg="gray.600">
         <TouchableOpacity onPress={() => props.navigate()}>
           <Icon as={Feather} name="arrow-left" size={6} color="green.500" />
