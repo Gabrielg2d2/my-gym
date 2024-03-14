@@ -1,7 +1,16 @@
 import { UserPhoto } from "@components/UserPhoto";
+import * as FileSystem from "expo-file-system";
 import * as ImagePicker from "expo-image-picker";
 import { Center, Skeleton, Text } from "native-base";
-import { TouchableOpacity } from "react-native";
+import { Alert, TouchableOpacity } from "react-native";
+
+type IPhotoInfo = {
+  exists: boolean;
+  isDirectory: boolean;
+  modificationTime: number;
+  size: number;
+  uri: string;
+} & FileSystem.FileInfo;
 
 type IAvatarProps = {
   urlAvatarUser?: string;
@@ -22,7 +31,17 @@ export function Avatar(props: IAvatarProps) {
 
       if (photoSelected.canceled) return;
 
-      if (photoSelected.assets[0].uri) {
+      if (photoSelected?.assets[0]?.uri) {
+        const photoInfo = (await FileSystem.getInfoAsync(
+          photoSelected.assets[0].uri
+        )) as IPhotoInfo;
+
+        if (photoInfo?.size && photoInfo?.size > 5000000) {
+          return Alert.alert(
+            "Imagem muito grande, selecione uma imagem menor que 5MB"
+          );
+        }
+
         props.handleEditPhoto(photoSelected.assets[0].uri);
       }
     } catch (error) {
