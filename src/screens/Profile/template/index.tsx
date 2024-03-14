@@ -9,7 +9,7 @@ export type IProfileTemplateProps = {
   urlAvatar?: string;
   name?: string;
   email?: string;
-  handleEditPhoto: () => void;
+  handleEditPhoto: (newUri: string) => void;
 };
 
 export function ProfileTemplate(props: IProfileTemplateProps) {

@@ -8,8 +8,8 @@ export function Profile() {
     "https://github.com/Gabrielg2d2.png"
   );
 
-  function handleEditPhoto() {
-    console.log("Edit Photo");
+  async function handleEditPhoto(newUri: string) {
+    setUrlAvatar(newUri);
   }
 
   const propsTemplate: IProfileTemplateProps = {
