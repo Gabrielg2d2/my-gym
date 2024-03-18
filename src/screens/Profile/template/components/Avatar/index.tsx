@@ -1,8 +1,8 @@
 import { UserPhoto } from "@components/UserPhoto";
 import * as FileSystem from "expo-file-system";
 import * as ImagePicker from "expo-image-picker";
-import { Center, Skeleton, Text } from "native-base";
-import { Alert, TouchableOpacity } from "react-native";
+import { Center, Skeleton, Text, useToast } from "native-base";
+import { TouchableOpacity } from "react-native";
 
 type IPhotoInfo = {
   exists: boolean;
@@ -20,6 +20,8 @@ type IAvatarProps = {
 const PHOTO_SIZE = 33;
 
 export function Avatar(props: IAvatarProps) {
+  const toast = useToast();
+
   async function handleEditUserPhoto() {
     try {
       const photoSelected = await ImagePicker.launchImageLibraryAsync({
@@ -37,9 +39,11 @@ export function Avatar(props: IAvatarProps) {
         )) as IPhotoInfo;
 
         if (photoInfo?.size && photoInfo?.size > 5000000) {
-          return Alert.alert(
-            "Imagem muito grande, selecione uma imagem menor que 5MB"
-          );
+          return toast.show({
+            title: "Imagem muito grande, selecione uma imagem menor que 5MB",
+            placement: "top",
+            bgColor: "red.500",
+          });
         }
 
         props.handleEditPhoto(photoSelected.assets[0].uri);
