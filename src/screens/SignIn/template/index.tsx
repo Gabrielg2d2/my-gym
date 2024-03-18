@@ -2,6 +2,7 @@ import BackGroundImg from "@assets/background.png";
 import LogoSVG from "@assets/logo.svg";
 import { Button } from "@components/Button";
 import { Input } from "@components/Input";
+import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Center,
   Heading,
@@ -12,13 +13,44 @@ import {
   VStack,
 } from "native-base";
 import React from "react";
+import { Controller, useForm } from "react-hook-form";
 import { Keyboard, Platform, TouchableWithoutFeedback } from "react-native";
+import * as zod from "zod";
 
 export type ISignInTemplateProps = {
   navigateSignUp: () => void;
 };
 
+const schema = zod.object({
+  email: zod
+    .string({
+      required_error: "O e-mail é obrigatório",
+    })
+    .email({
+      message: "Por favor, insira um e-mail válido. Ex: gabs@gmail.com",
+    }),
+  password: zod
+    .string({
+      required_error: "A senha é obrigatória",
+    })
+    .min(6, {
+      message: "A senha deve conter no mínimo 6 caracteres",
+    }),
+});
+
 export function SignInTemplate({ navigateSignUp }: ISignInTemplateProps) {
+  const {
+    handleSubmit,
+    formState: { errors },
+    control,
+  } = useForm({
+    resolver: zodResolver(schema),
+  });
+
+  function onSubmit(data: any) {
+    console.log("data_submit: ", JSON.stringify(data));
+  }
+
   return (
     <KeyboardAvoidingView
       h={{
@@ -59,13 +91,38 @@ export function SignInTemplate({ navigateSignUp }: ISignInTemplateProps) {
               Acesse sua conta
             </Heading>
 
-            <Input
-              placeholder="E-mail"
-              keyboardType="email-address"
-              autoCapitalize="none"
+            <Controller
+              control={control}
+              name="email"
+              render={({ field }) => (
+                <Input
+                  placeholder="E-mail"
+                  keyboardType="email-address"
+                  autoCapitalize="none"
+                  onChangeText={field.onChange}
+                  value={field.value}
+                  error={!!errors.email}
+                  textHelper={errors.email?.message}
+                />
+              )}
             />
-            <Input placeholder="Senha" secureTextEntry />
-            <Button text="Acessar" />
+
+            <Controller
+              control={control}
+              name="password"
+              render={({ field }) => (
+                <Input
+                  placeholder="Senha"
+                  secureTextEntry
+                  onChangeText={field.onChange}
+                  value={field.value}
+                  error={!!errors.password}
+                  textHelper={errors.password?.message}
+                />
+              )}
+            />
+
+            <Button text="Acessar" onPress={handleSubmit(onSubmit)} />
 
             <Text
               color="gray.100"
