@@ -33,8 +33,8 @@ export function Input({ error = false, textHelper, ...rest }: InputProps) {
         }}
         {...rest}
       />
-      <FormControl.HelperText>{textHelper}</FormControl.HelperText>
       <FormControl.ErrorMessage>{textHelper}</FormControl.ErrorMessage>
+      {!error && <FormControl.HelperText>{textHelper}</FormControl.HelperText>}
     </FormControl>
   );
 }
