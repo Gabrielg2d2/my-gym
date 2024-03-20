@@ -3,6 +3,7 @@ import {
   IInputProps,
   Input as NativeBaseInput,
 } from "native-base";
+import { useMemo } from "react";
 
 type InputProps = IInputProps & {
   error?: boolean;
@@ -10,6 +11,18 @@ type InputProps = IInputProps & {
 };
 
 export function Input({ error = false, textHelper, ...rest }: InputProps) {
+  const messageError = useMemo(() => {
+    if (error && textHelper) {
+      return <FormControl.ErrorMessage>{textHelper}</FormControl.ErrorMessage>;
+    }
+  }, [error, textHelper]);
+
+  const messageHelper = useMemo(() => {
+    if (!error && textHelper) {
+      return <FormControl.HelperText>{textHelper}</FormControl.HelperText>;
+    }
+  }, [error, textHelper]);
+
   return (
     <FormControl isInvalid={error}>
       <NativeBaseInput
@@ -33,8 +46,8 @@ export function Input({ error = false, textHelper, ...rest }: InputProps) {
         }}
         {...rest}
       />
-      <FormControl.ErrorMessage>{textHelper}</FormControl.ErrorMessage>
-      {!error && <FormControl.HelperText>{textHelper}</FormControl.HelperText>}
+      {messageError}
+      {messageHelper}
     </FormControl>
   );
 }
