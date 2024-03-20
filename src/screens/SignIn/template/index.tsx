@@ -102,7 +102,7 @@ export function SignInTemplate({ navigateSignUp }: ISignInTemplateProps) {
                   onChangeText={field.onChange}
                   value={field.value}
                   error={!!errors.email}
-                  textHelper={errors.email?.message}
+                  textHelper={String(errors.email?.message)}
                 />
               )}
             />
@@ -117,7 +117,7 @@ export function SignInTemplate({ navigateSignUp }: ISignInTemplateProps) {
                   onChangeText={field.onChange}
                   value={field.value}
                   error={!!errors.password}
-                  textHelper={errors.password?.message}
+                  textHelper={String(errors.password?.message)}
                 />
               )}
             />
