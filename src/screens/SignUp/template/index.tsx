@@ -2,6 +2,7 @@ import BackGroundImg from "@assets/background.png";
 import LogoSVG from "@assets/logo.svg";
 import { Button } from "@components/Button";
 import { Input } from "@components/Input";
+import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Center,
   Heading,
@@ -12,13 +13,55 @@ import {
   VStack,
 } from "native-base";
 import React from "react";
+import { Controller, useForm } from "react-hook-form";
 import { Keyboard, Platform, TouchableWithoutFeedback } from "react-native";
+import * as zod from "zod";
 
 export type ISignUpTemplateProps = {
   navigateSignIn: () => void;
+  signUp: (data: any) => Promise<void>;
 };
 
-export function SignUpTemplate({ navigateSignIn }: ISignUpTemplateProps) {
+const schema = zod.object({
+  name: zod
+    .string({
+      required_error: "O nome é obrigatório",
+    })
+    .min(3, {
+      message: "O nome deve conter no mínimo 3 caracteres",
+    }),
+  email: zod
+    .string({
+      required_error: "O e-mail é obrigatório",
+    })
+    .email({
+      message: "Por favor, insira um e-mail válido. Ex: gabs@gmail.com",
+    }),
+  password: zod
+    .string({
+      required_error: "A senha é obrigatória",
+    })
+    .min(6, {
+      message: "A senha deve conter no mínimo 6 caracteres",
+    }),
+});
+
+export function SignUpTemplate({
+  navigateSignIn,
+  signUp,
+}: ISignUpTemplateProps) {
+  const {
+    handleSubmit,
+    formState: { errors },
+    control,
+  } = useForm({
+    resolver: zodResolver(schema),
+  });
+
+  async function onSubmit(data: any) {
+    await signUp(data);
+  }
+
   return (
     <KeyboardAvoidingView
       h={{
@@ -60,17 +103,61 @@ export function SignUpTemplate({ navigateSignIn }: ISignUpTemplateProps) {
               Crie sua conta
             </Heading>
 
-            <Input placeholder="Nome" />
-
-            <Input
-              placeholder="E-mail"
-              keyboardType="email-address"
-              autoCapitalize="none"
+            <Controller
+              control={control}
+              name="name"
+              render={({ field }) => (
+                <Input
+                  placeholder="Nome"
+                  keyboardType="name-phone-pad"
+                  autoCapitalize="none"
+                  onChangeText={field.onChange}
+                  value={field.value}
+                  error={!!errors.email}
+                  textHelper={
+                    errors?.email?.message && String(errors?.email?.message)
+                  }
+                />
+              )}
             />
 
-            <Input placeholder="Senha" secureTextEntry />
+            <Controller
+              control={control}
+              name="email"
+              render={({ field }) => (
+                <Input
+                  placeholder="E-mail"
+                  keyboardType="email-address"
+                  autoCapitalize="none"
+                  onChangeText={field.onChange}
+                  value={field.value}
+                  error={!!errors.email}
+                  textHelper={
+                    errors?.email?.message && String(errors?.email?.message)
+                  }
+                />
+              )}
+            />
 
-            <Button text="Criar e acessar" />
+            <Controller
+              control={control}
+              name="password"
+              render={({ field }) => (
+                <Input
+                  placeholder="Senha"
+                  secureTextEntry
+                  onChangeText={field.onChange}
+                  value={field.value}
+                  error={!!errors.password}
+                  textHelper={
+                    errors?.password?.message &&
+                    String(errors?.password?.message)
+                  }
+                />
+              )}
+            />
+
+            <Button text="Criar e acessar" onPress={handleSubmit(onSubmit)} />
             <Button
               mt="auto"
               text="Voltar para o login"
