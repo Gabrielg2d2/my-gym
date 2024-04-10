@@ -1,4 +1,4 @@
-import { SignUpMain } from "@domain/login/main";
+import { SignUpMain } from "@domain/login/ signUp/main";
 import { useNavigationAuth } from "@routes/useNavigationAuth";
 import React, { useState } from "react";
 import { ISignUpTemplateProps, SignUpTemplate } from "./template";
