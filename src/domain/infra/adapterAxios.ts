@@ -1,35 +1,20 @@
-import axios from "axios";
-
+import { api } from "@services/api";
 import { type IAdapter } from "./interfaceAdapter";
 
-class Adapter implements IAdapter {
-  private api = axios.create({
-    baseURL: "http://192.168.15.2:3333/",
-  });
-
+export class AdapterAxios implements IAdapter {
   async get<T>(url: string, config?: any) {
-    return await this.api.get<T>(url, config);
+    return await api.get<T>(url, config);
   }
 
   async post<T>(url: string, data?: any, config?: any) {
-    return await this.api.post<T>(url, data, config);
+    return await api.post<T>(url, data, config);
   }
 
   async put<T>(url: string, data?: any, config?: any) {
-    return await this.api.put<T>(url, data, config);
+    return await api.put<T>(url, data, config);
   }
 
   async delete<T>(url: string, config?: any) {
-    return await this.api.delete<T>(url, config);
+    return await api.delete<T>(url, config);
   }
 }
-
-let AdapterAxios: Adapter | null = null;
-
-if (AdapterAxios === null) {
-  AdapterAxios = new Adapter();
-} else {
-  AdapterAxios = AdapterAxios;
-}
-
-export default AdapterAxios;

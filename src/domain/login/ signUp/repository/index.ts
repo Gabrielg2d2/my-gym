@@ -1,7 +1,7 @@
-import AdapterAxios from "@domain/infra/adapterAxios";
+import { AdapterAxios } from "@domain/infra/adapterAxios";
 
 export class Repository {
-  constructor(private readonly infra = AdapterAxios) {}
+  constructor(private readonly infra = new AdapterAxios()) {}
 
   async signUp(name: string, email: string, password: string) {
     try {
