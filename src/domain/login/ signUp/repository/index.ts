@@ -14,7 +14,7 @@ export class Repository {
 
       return {
         data: response.data,
-        erros: [],
+        errors: [],
         messages: ["Cadastro realizado com sucesso!"],
       };
     } catch (error) {
