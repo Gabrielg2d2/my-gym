@@ -6,11 +6,15 @@ import { ISignUpTemplateProps, SignUpTemplate } from "./template";
 
 export function SignUp() {
   const { navigateSignIn } = useNavigationAuth();
-  const [loginMain] = useState(new SignUpMain());
+  const [signUpMain] = useState(new SignUpMain());
   const toast = useToast();
 
   async function signUp(data: any) {
-    const result = await loginMain.signUp(data.name, data.email, data.password);
+    const result = await signUpMain.signUp(
+      data.name,
+      data.email,
+      data.password
+    );
 
     if (result.messages.length > 0) {
       result.messages.forEach((message) =>
