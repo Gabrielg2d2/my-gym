@@ -1,4 +1,5 @@
 import { AdapterAxios } from "@domain/infra/adapterAxios";
+import { appError } from "@global/appError";
 
 export class Repository {
   constructor(private readonly infra = new AdapterAxios()) {}
@@ -10,9 +11,14 @@ export class Repository {
         email,
         password,
       });
-      console.log("response: ", response);
+
+      return {
+        data: response.data,
+        erros: [],
+        messages: ["Cadastro realizado com sucesso!"],
+      };
     } catch (error) {
-      console.log("error: ", error);
+      return appError(error);
     }
   }
 }
