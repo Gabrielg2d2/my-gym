@@ -35,9 +35,18 @@ describe("SignUpMain", () => {
 
     describe("Success", () => {
       it("should return a success message if all fields are provided", async () => {
-        const signUpMain = new SignUpMain();
+        const mockRepository = {
+          signUp: jest.fn().mockResolvedValue({
+            data: {},
+            errors: [],
+            messages: ["Cadastro realizado com sucesso!"],
+          }),
+        } as any;
+
+        const signUpMain = new SignUpMain(mockRepository);
         const response = await signUpMain.signUp("name", "email", "password");
         expect(response.errors).toEqual([]);
+        expect(response.messages).toContain("Cadastro realizado com sucesso!");
       });
     });
   });
