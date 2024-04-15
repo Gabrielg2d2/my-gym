@@ -2,7 +2,7 @@ import axios from "axios";
 
 type IReturnError = {
   data: any;
-  erros: string[];
+  errors: string[];
   messages: string[];
 };
 
@@ -12,7 +12,7 @@ export function appError(error: any): IReturnError {
     if (error.response && error.response.data) {
       return {
         data: null,
-        erros: [error.response.data.message],
+        errors: [error.response.data.message],
         messages: [],
       };
     }
@@ -20,7 +20,7 @@ export function appError(error: any): IReturnError {
 
   return {
     data: null,
-    erros: ["Erro no servidor, tente novamente mais tarde!"],
+    errors: ["Erro no servidor, tente novamente mais tarde!"],
     messages: [],
   };
 }

@@ -22,8 +22,8 @@ export function SignUp() {
       );
       navigateSignIn();
     }
-    if (result.erros.length > 0) {
-      result.erros.forEach((error) =>
+    if (result.errors.length > 0) {
+      result.errors.forEach((error) =>
         toast.show({
           title: error,
           duration: 5000,
