@@ -17,9 +17,15 @@ import { Controller, useForm } from "react-hook-form";
 import { Keyboard, Platform, TouchableWithoutFeedback } from "react-native";
 import * as zod from "zod";
 
+export type IData = {
+  name: string;
+  email: string;
+  password: string;
+};
+
 export type ISignUpTemplateProps = {
   navigateSignIn: () => void;
-  signUp: (data: any) => Promise<void>;
+  signUp: (data: IData) => Promise<void>;
 };
 
 const schema = zod.object({
@@ -58,7 +64,7 @@ export function SignUpTemplate({
     resolver: zodResolver(schema),
   });
 
-  async function onSubmit(data: any) {
+  async function onSubmit(data: IData) {
     await signUp(data);
   }
 

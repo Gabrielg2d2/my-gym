@@ -1,5 +1,5 @@
 import { AdapterAxios } from "@domain/infra/adapterAxios";
-import { appError } from "@global/appError";
+import { appError } from "@global/functions/appError";
 
 export class Repository {
   constructor(private readonly infra = new AdapterAxios()) {}
