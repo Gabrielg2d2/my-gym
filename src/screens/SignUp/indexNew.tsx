@@ -17,9 +17,9 @@ export function SignUp() {
       data.password
     );
 
-    toastCustom(toast, result.messages, result.errors);
+    toastCustom(toast, result.message, result.typeMessage);
 
-    if (result.errors.length === 0) {
+    if (result.typeMessage === "success") {
       navigateSignIn();
     }
   }

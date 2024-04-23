@@ -1,26 +1,27 @@
+import { ITypeMessage_GLOBAL } from "@global/types/typeMessage";
 import axios from "axios";
 
 type IReturnError = {
   data: any;
-  errors: string[];
-  messages: string[];
+  message: string;
+  typeMessage: ITypeMessage_GLOBAL;
 };
 
-export function appError(error: any): IReturnError {
+export function appError(error: Error): IReturnError {
   if (axios.isAxiosError(error)) {
-    // Padrão de erro da API => error.response && error.response.data
-    if (error.response && error.response.data) {
+    // Padrão de erro da API => error.response && error.response.data && error.response.data.message
+    if (error.response && error.response.data && error.response.data.message) {
       return {
         data: null,
-        errors: [error.response.data.message],
-        messages: [],
+        message: error.response.data.message,
+        typeMessage: "error",
       };
     }
   }
 
   return {
     data: null,
-    errors: ["Erro no servidor, tente novamente mais tarde!"],
-    messages: [],
+    message: "Erro no servidor, tente novamente mais tarde!",
+    typeMessage: "error",
   };
 }
