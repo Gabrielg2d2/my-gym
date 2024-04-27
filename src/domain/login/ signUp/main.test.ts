@@ -11,25 +11,19 @@ describe("SignUpMain", () => {
       it("should return an error message if name is not provided", async () => {
         const signUpMain = new SignUpMain();
         const response = await signUpMain.signUp("", "email", "password");
-        expect(response.errors).toContain(
-          "Preencha todos os campos! (name, email, password)"
-        );
+        expect(response.typeMessage).toBe("error");
       });
 
       it("should return an error message if email is not provided", async () => {
         const signUpMain = new SignUpMain();
         const response = await signUpMain.signUp("name", "", "password");
-        expect(response.errors).toContain(
-          "Preencha todos os campos! (name, email, password)"
-        );
+        expect(response.typeMessage).toBe("error");
       });
 
       it("should return an error message if password is not provided", async () => {
         const signUpMain = new SignUpMain();
         const response = await signUpMain.signUp("name", "email", "");
-        expect(response.errors).toContain(
-          "Preencha todos os campos! (name, email, password)"
-        );
+        expect(response.typeMessage).toBe("error");
       });
     });
 
@@ -45,8 +39,8 @@ describe("SignUpMain", () => {
 
         const signUpMain = new SignUpMain(mockRepository);
         const response = await signUpMain.signUp("name", "email", "password");
-        expect(response.errors).toEqual([]);
-        expect(response.messages).toContain("Cadastro realizado com sucesso!");
+        expect(response.message).toContain("Cadastro realizado com sucesso!");
+        expect(response.typeMessage).toBe("success");
       });
     });
   });
