@@ -1,6 +1,5 @@
-type IArrayMessages = Array<string>;
 import { ITypeMessage_GLOBAL } from "@global/types/typeMessage";
-import { useToast } from "native-base";
+import { useToast as useToastNativeBase } from "native-base";
 
 type IPlacement =
   | "top"
@@ -25,16 +24,23 @@ function getTypeColorMessage(typeMessage: ITypeMessage_GLOBAL) {
   }
 }
 
-export function toastCustom(
-  toast: ReturnType<typeof useToast>,
-  message: string,
-  typeMessage: ITypeMessage_GLOBAL = "error",
-  placement: IPlacement = "top"
-) {
-  return toast.show({
-    title: message,
-    placement,
-    duration: 5000,
-    bgColor: getTypeColorMessage(typeMessage),
-  });
+export function useToastCustom() {
+  const toastNativeBase = useToastNativeBase();
+
+  function toastCustom(
+    message: string,
+    typeMessage: ITypeMessage_GLOBAL = "error",
+    placement: IPlacement = "top"
+  ) {
+    return toastNativeBase.show({
+      title: message,
+      placement,
+      duration: 5000,
+      bgColor: getTypeColorMessage(typeMessage),
+    });
+  }
+
+  return {
+    toastCustom,
+  };
 }

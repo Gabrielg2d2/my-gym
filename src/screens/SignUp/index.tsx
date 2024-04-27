@@ -1,40 +1,25 @@
 import { SignUpMain } from "@domain/login/ signUp/main";
+import { useToastCustom } from "@hooks/useToastCustom";
 import { useNavigationAuth } from "@routes/useNavigationAuth";
-import { useToast } from "native-base";
 import React, { useState } from "react";
-import { ISignUpTemplateProps, SignUpTemplate } from "./template";
+import { IData, ISignUpTemplateProps, SignUpTemplate } from "./template";
 
 export function SignUp() {
   const { navigateSignIn } = useNavigationAuth();
   const [signUpMain] = useState(new SignUpMain());
-  const toast = useToast();
+  const { toastCustom } = useToastCustom();
 
-  async function signUp(data: any) {
+  async function signUp(data: IData) {
     const result = await signUpMain.signUp(
       data.name,
       data.email,
       data.password
     );
 
-    if (result.messages.length > 0) {
-      result.messages.forEach((message) =>
-        toast.show({
-          title: message,
-          placement: "top",
-          duration: 3000,
-        })
-      );
+    toastCustom(result.message, result.typeMessage);
+
+    if (result.typeMessage === "success") {
       navigateSignIn();
-    }
-    if (result.errors.length > 0) {
-      result.errors.forEach((error) =>
-        toast.show({
-          title: error,
-          duration: 5000,
-          placement: "top",
-          bgColor: "red.500",
-        })
-      );
     }
   }
 
