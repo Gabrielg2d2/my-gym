@@ -24,18 +24,23 @@ function getTypeColorMessage(typeMessage: ITypeMessage_GLOBAL) {
   }
 }
 
+type IOptionsToast = {
+  placement: IPlacement;
+  duration: number;
+};
+
 export function useToastCustom() {
   const toastNativeBase = useToastNativeBase();
 
   function toastCustom(
     message: string,
-    typeMessage: ITypeMessage_GLOBAL = "error",
-    placement: IPlacement = "top"
+    typeMessage: ITypeMessage_GLOBAL,
+    options?: IOptionsToast
   ) {
     return toastNativeBase.show({
       title: message,
-      placement,
-      duration: 5000,
+      placement: options?.placement ?? "top",
+      duration: options?.duration ?? 8000,
       bgColor: getTypeColorMessage(typeMessage),
     });
   }
