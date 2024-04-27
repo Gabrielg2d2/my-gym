@@ -1,33 +1,9 @@
-import { AdapterAxios } from "@domain/infra/adapterAxios";
-import { appError } from "@global/functions/appError";
-import { IReturnDefault_GLOBAL } from "@global/types/returnDefault";
-
-type IData = {} | null;
-
-export type IPromiseReturnDefault = Promise<IReturnDefault_GLOBAL<IData>>;
+import { _singUp } from "./functions/signUp";
 
 export class Repository {
-  constructor(private readonly infra = new AdapterAxios()) {}
+  private readonly _singUp = new _singUp();
 
-  async signUp(
-    name: string,
-    email: string,
-    password: string
-  ): IPromiseReturnDefault {
-    try {
-      const response = await this.infra?.post<IData>("users", {
-        name,
-        email,
-        password,
-      });
-
-      return {
-        data: response.data,
-        message: "Cadastro realizado com sucesso!",
-        typeMessage: "success",
-      };
-    } catch (error: Error | any) {
-      return appError(error);
-    }
+  async signUp(name: string, email: string, password: string) {
+    return await this._singUp.execute(name, email, password);
   }
 }
