@@ -39,9 +39,9 @@ describe("SignUpMain", () => {
 
         const signUpMain = new SignUpMain(mockRepository);
         const response = await signUpMain.signUp(
-          "name",
+          "Gabriel",
           "gabs@gmail.com",
-          "password"
+          "1234567890"
         );
         expect(response.message).toContain("Cadastro realizado com sucesso!");
         expect(response.typeMessage).toBe("success");
