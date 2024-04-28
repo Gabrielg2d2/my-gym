@@ -1,6 +1,10 @@
 import { _singUp } from "./functions/signUp";
 
-export class Repository {
+interface IRepositoryInterface {
+  signUp(name: string, email: string, password: string): Promise<any>;
+}
+
+export class Repository implements IRepositoryInterface {
   private readonly _singUp = new _singUp();
 
   async signUp(name: string, email: string, password: string) {
