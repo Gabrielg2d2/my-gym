@@ -1,6 +1,10 @@
 import { IsValidDataSignUp } from "./functions/isValidDataSignUp";
 
-export class Services {
+interface IServicesInterface {
+  isValidDataSignUp(name: string, email: string, password: string): boolean;
+}
+
+export class Services implements IServicesInterface {
   private readonly _isValidDataSignUp = new IsValidDataSignUp();
 
   isValidDataSignUp(name: string, email: string, password: string) {
