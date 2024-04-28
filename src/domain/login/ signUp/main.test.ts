@@ -32,13 +32,17 @@ describe("SignUpMain", () => {
         const mockRepository = {
           signUp: jest.fn().mockResolvedValue({
             data: {},
-            errors: [],
-            messages: ["Cadastro realizado com sucesso!"],
+            message: "Cadastro realizado com sucesso!",
+            typeMessage: "success",
           }),
         } as any;
 
         const signUpMain = new SignUpMain(mockRepository);
-        const response = await signUpMain.signUp("name", "email", "password");
+        const response = await signUpMain.signUp(
+          "name",
+          "gabs@gmail.com",
+          "password"
+        );
         expect(response.message).toContain("Cadastro realizado com sucesso!");
         expect(response.typeMessage).toBe("success");
       });
