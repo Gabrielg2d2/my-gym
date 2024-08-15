@@ -1,5 +1,5 @@
 import { AppError } from "@domain/functions/appError";
-import { AdapterAxios } from "@domain/infra/adapterAxios";
+import { AdapterAxios } from "@domain/infra/http/adapterAxios";
 import { IReturnDefault_GLOBAL } from "@global/types/returnDefault";
 
 type IDataSignUp = {} | null;

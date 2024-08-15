@@ -1,5 +1,5 @@
 import { api } from "@services/api";
-import { type IAdapter } from "./interfaceAdapter";
+import { type IAdapter } from "./interface";
 
 export class AdapterAxios implements IAdapter {
   async get<T>(url: string, config?: any) {
