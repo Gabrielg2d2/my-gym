@@ -12,13 +12,17 @@ import {
   Text,
   VStack,
 } from "native-base";
-import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import { Keyboard, Platform, TouchableWithoutFeedback } from "react-native";
 import * as zod from "zod";
 
 export type ISignInTemplateProps = {
   navigateSignUp: () => void;
+};
+
+type IData = {
+  email: string;
+  password: string;
 };
 
 const schema = zod.object({
@@ -43,11 +47,11 @@ export function SignInTemplate({ navigateSignUp }: ISignInTemplateProps) {
     handleSubmit,
     formState: { errors },
     control,
-  } = useForm({
+  } = useForm<IData>({
     resolver: zodResolver(schema),
   });
 
-  function onSubmit(data: any) {
+  function onSubmit(data: IData) {
     console.log("data_submit: ", JSON.stringify(data));
   }
 
