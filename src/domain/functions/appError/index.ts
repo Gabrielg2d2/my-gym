@@ -1,4 +1,4 @@
-import { ITypeMessage_GLOBAL } from "@global/types/typeMessage";
+import { ITypeMessage_GLOBAL } from "@domain/types/typeMessage";
 import axios from "axios";
 
 type IReturnError = {
@@ -21,7 +21,7 @@ export class AppError {
         return {
           data: null,
           message: this.error.response.data.message,
-          typeMessage: "error",
+          typeMessage: ITypeMessage_GLOBAL.ERROR,
         };
       }
     }
@@ -29,7 +29,7 @@ export class AppError {
     return {
       data: null,
       message: "Erro no servidor, tente novamente mais tarde!",
-      typeMessage: "error",
+      typeMessage: ITypeMessage_GLOBAL.FATAL,
     };
   }
 }

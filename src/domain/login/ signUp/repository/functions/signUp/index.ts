@@ -1,6 +1,7 @@
 import { AppError } from "@domain/functions/appError";
 import { AdapterAxios } from "@domain/infra/http/adapterAxios";
-import { IReturnDefault_GLOBAL } from "@global/types/returnDefault";
+import { IReturnDefault_GLOBAL } from "@domain/types/returnDefault";
+import { ITypeMessage_GLOBAL } from "@domain/types/typeMessage";
 
 type IDataSignUp = {} | null;
 type IPromiseReturnDefault = Promise<IReturnDefault_GLOBAL<IDataSignUp>>;
@@ -23,7 +24,7 @@ export class _singUp {
       return {
         data: response.data,
         message: "Cadastro realizado com sucesso!",
-        typeMessage: "success",
+        typeMessage: ITypeMessage_GLOBAL.SUCCESS,
       };
     } catch (error: Error | any) {
       const appError = new AppError(error);

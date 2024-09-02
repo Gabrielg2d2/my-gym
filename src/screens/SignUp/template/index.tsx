@@ -12,7 +12,6 @@ import {
   Text,
   VStack,
 } from "native-base";
-import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import { Keyboard, Platform, TouchableWithoutFeedback } from "react-native";
 import * as zod from "zod";
@@ -60,7 +59,7 @@ export function SignUpTemplate({
     handleSubmit,
     formState: { errors },
     control,
-  } = useForm({
+  } = useForm<IData>({
     resolver: zodResolver(schema),
   });
 
@@ -119,9 +118,9 @@ export function SignUpTemplate({
                   autoCapitalize="none"
                   onChangeText={field.onChange}
                   value={field.value}
-                  error={!!errors.email}
+                  error={!!errors.name}
                   textHelper={
-                    errors?.email?.message && String(errors?.email?.message)
+                    errors?.name?.message && String(errors?.name?.message)
                   }
                 />
               )}
