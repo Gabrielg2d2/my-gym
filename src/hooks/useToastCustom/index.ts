@@ -1,4 +1,4 @@
-import { ITypeMessage_GLOBAL } from "@global/types/typeMessage";
+import { ITypeMessage_GLOBAL } from "@domain/types/typeMessage";
 import { useToast as useToastNativeBase } from "native-base";
 
 type IPlacement =

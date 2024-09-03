@@ -1,4 +1,4 @@
-import { ZodAdapter } from "@domain/adapters/zod";
+import { ZodAdapter } from "@domain/adapters/validator/zod";
 
 export class IsValidDataSignUp {
   constructor(private readonly adapter = new ZodAdapter()) {}
@@ -7,7 +7,7 @@ export class IsValidDataSignUp {
     const schema = this.adapter.validator().object({
       name: this.adapter.validator().string().min(3).max(255),
       email: this.adapter.validator().string().email(),
-      password: this.adapter.validator().string().min(6).max(255),
+      password: this.adapter.validator().string().min(6).max(20),
     });
 
     return this.adapter.isValid({ name, email, password }, schema);

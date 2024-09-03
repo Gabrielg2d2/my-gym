@@ -1,3 +1,4 @@
+import { ITypeMessage_GLOBAL } from "@domain/types/typeMessage";
 import { Repository } from "./repository";
 import { Services } from "./services";
 export class SignUpMain {
@@ -11,7 +12,7 @@ export class SignUpMain {
       return {
         data: null,
         message: "Preencha todos os campos corretamente!",
-        typeMessage: "error",
+        typeMessage: ITypeMessage_GLOBAL.ERROR,
       };
     }
 
