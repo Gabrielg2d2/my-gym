@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Text } from "native-base";
 import { Controller, useForm } from "react-hook-form";
 import * as zod from "zod";
-import { Container } from "./Container";
+import { Container } from "./components/Container";
 
 export type ISignInTemplateProps = {
   navigateSignUp: () => void;

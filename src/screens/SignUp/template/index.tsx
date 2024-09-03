@@ -3,7 +3,7 @@ import { Input } from "@components/Input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm } from "react-hook-form";
 import * as zod from "zod";
-import { Container } from "./Container";
+import { Container } from "./components/Container";
 
 export type IData = {
   name: string;
