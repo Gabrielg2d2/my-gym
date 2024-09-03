@@ -1,7 +1,8 @@
 import { SignUpMain } from "@domain/login/ signUp/main";
+import { ITypeMessage_GLOBAL } from "@domain/types/typeMessage";
 import { useToastCustom } from "@hooks/useToastCustom";
 import { useNavigationAuth } from "@routes/useNavigationAuth";
-import React, { useState } from "react";
+import { useState } from "react";
 import { IData, ISignUpTemplateProps, SignUpTemplate } from "./template";
 
 export function SignUp() {
@@ -18,7 +19,7 @@ export function SignUp() {
 
     toastCustom(result.message, result.typeMessage);
 
-    if (result.typeMessage === "success") {
+    if (result.typeMessage === ITypeMessage_GLOBAL.SUCCESS) {
       navigateSignIn();
     }
   }
