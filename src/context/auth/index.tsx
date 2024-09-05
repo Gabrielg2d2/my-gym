@@ -15,6 +15,7 @@ type AuthType = {
 type AuthContextType = {
   signIn: (data: IData) => Promise<void>;
   getUserData: () => IDataUser;
+  signOut: () => void;
 };
 
 type IDataUser = IDataSignIn | null;
@@ -42,8 +43,12 @@ export function AuthProvider({ children }: AuthType) {
     return userData;
   }
 
+  function signOut() {
+    setUserData(null);
+  }
+
   return (
-    <AuthContext.Provider value={{ signIn, getUserData }}>
+    <AuthContext.Provider value={{ signIn, signOut, getUserData }}>
       {children}
     </AuthContext.Provider>
   );
