@@ -21,6 +21,8 @@ export class _singUp {
         password,
       });
 
+      console.log("response.data: ", response.data);
+
       return {
         data: response.data,
         message: "Cadastro realizado com sucesso!",

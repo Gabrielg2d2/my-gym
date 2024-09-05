@@ -8,6 +8,7 @@ import {
 } from "@expo-google-fonts/roboto";
 import { Routes } from "@routes/index";
 import { NativeBaseProvider } from "native-base";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { AuthProvider } from "./src/context/auth";
 import { THEME } from "./src/theme";
 
@@ -23,7 +24,9 @@ export default function App() {
         <Loading />
       ) : (
         <AuthProvider>
-          <Routes />
+          <SafeAreaView style={{ flex: 1, backgroundColor: "#202024" }}>
+            <Routes />
+          </SafeAreaView>
         </AuthProvider>
       )}
       <StatusBar
