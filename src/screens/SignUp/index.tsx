@@ -1,3 +1,4 @@
+import { LoadingPage } from "@components/LoadingPage";
 import { SignUpMain } from "@domain/login/ signUp/main";
 import { ITypeMessage_GLOBAL } from "@domain/types/typeMessage";
 import { useToastCustom } from "@hooks/useToastCustom";
@@ -8,19 +9,25 @@ import { IData, ISignUpTemplateProps, SignUpTemplate } from "./template";
 export function SignUp() {
   const { navigateSignIn } = useNavigationAuth();
   const [signUpMain] = useState(new SignUpMain());
+  const [loading, setLoading] = useState(false);
   const { toastCustom } = useToastCustom();
 
   async function signUp(data: IData) {
-    const result = await signUpMain.signUp(
-      data.name,
-      data.email,
-      data.password
-    );
+    try {
+      setLoading(true);
+      const result = await signUpMain.signUp(
+        data.name,
+        data.email,
+        data.password
+      );
 
-    toastCustom(result.message, result.typeMessage);
+      toastCustom(result.message, result.typeMessage);
 
-    if (result.typeMessage === ITypeMessage_GLOBAL.SUCCESS) {
-      navigateSignIn();
+      if (result.typeMessage === ITypeMessage_GLOBAL.SUCCESS) {
+        navigateSignIn();
+      }
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -29,5 +36,10 @@ export function SignUp() {
     signUp,
   };
 
-  return <SignUpTemplate {...propsTemplate} />;
+  return (
+    <>
+      <LoadingPage loading={loading} />
+      <SignUpTemplate {...propsTemplate} />
+    </>
+  );
 }

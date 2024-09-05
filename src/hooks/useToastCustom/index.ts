@@ -37,6 +37,10 @@ export function useToastCustom() {
     typeMessage: ITypeMessage_GLOBAL,
     options?: IOptionsToast
   ) {
+    if (!message) {
+      return;
+    }
+
     return toastNativeBase.show({
       title: message,
       placement: options?.placement ?? "top",
