@@ -14,6 +14,7 @@ type AuthType = {
 
 type AuthContextType = {
   signIn: (data: IData) => Promise<void>;
+  getUserData: () => IDataUser;
 };
 
 type IDataUser = IDataSignIn | null;
@@ -37,8 +38,14 @@ export function AuthProvider({ children }: AuthType) {
     toastCustom(result.message, result.typeMessage);
   }
 
+  function getUserData() {
+    return userData;
+  }
+
   return (
-    <AuthContext.Provider value={{ signIn }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ signIn, getUserData }}>
+      {children}
+    </AuthContext.Provider>
   );
 }
 

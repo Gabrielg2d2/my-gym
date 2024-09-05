@@ -8,6 +8,7 @@ import {
 } from "@expo-google-fonts/roboto";
 import { Routes } from "@routes/index";
 import { NativeBaseProvider } from "native-base";
+import { AuthProvider } from "./src/context/auth";
 import { THEME } from "./src/theme";
 
 export default function App() {
@@ -18,7 +19,13 @@ export default function App() {
 
   return (
     <NativeBaseProvider theme={THEME}>
-      {!fontsLoaded ? <Loading /> : <Routes />}
+      {!fontsLoaded ? (
+        <Loading />
+      ) : (
+        <AuthProvider>
+          <Routes />
+        </AuthProvider>
+      )}
       <StatusBar
         translucent
         backgroundColor="transparent"
