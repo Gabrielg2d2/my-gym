@@ -1,9 +1,11 @@
 import { useNavigationApp } from "@routes/useNavigationApp";
 import { useState } from "react";
+import { useAuthContext } from "src/context/auth";
 import { HomeTemplate, IHomeTemplateProps } from "./template";
 import { CardExerciseProps } from "./template/components/ListExerciseCard";
 
 export function Home() {
+  const { signOut } = useAuthContext();
   const [listExercise, setListExercise] = useState<CardExerciseProps[]>([
     {
       nameExercise: "Remada Unilateral",
@@ -60,7 +62,7 @@ export function Home() {
 
   const propsTemplate: IHomeTemplateProps = {
     header: {
-      signOut: () => {},
+      signOut: () => signOut(),
     },
     groups: {
       arrayGroups: listGroup,
