@@ -8,9 +8,10 @@ import { Container } from "./components/Container";
 
 export type ISignInTemplateProps = {
   navigateSignUp: () => void;
+  onSubmit: (data: IData) => void;
 };
 
-type IData = {
+export type IData = {
   email: string;
   password: string;
 };
@@ -32,7 +33,10 @@ const schema = zod.object({
     }),
 });
 
-export function SignInTemplate({ navigateSignUp }: ISignInTemplateProps) {
+export function SignInTemplate({
+  navigateSignUp,
+  onSubmit,
+}: ISignInTemplateProps) {
   const {
     handleSubmit,
     formState: { errors },
@@ -40,10 +44,6 @@ export function SignInTemplate({ navigateSignUp }: ISignInTemplateProps) {
   } = useForm<IData>({
     resolver: zodResolver(schema),
   });
-
-  function onSubmit(data: IData) {
-    console.log("data_submit: ", JSON.stringify(data));
-  }
 
   return (
     <Container>

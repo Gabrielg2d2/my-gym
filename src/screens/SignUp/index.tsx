@@ -1,5 +1,5 @@
 import { LoadingPage } from "@components/LoadingPage";
-import { SignUpMain } from "@domain/login/ signUp/main";
+import { SignUpMain } from "@domain/login/signUp/main";
 import { ITypeMessage_GLOBAL } from "@domain/types/typeMessage";
 import { useToastCustom } from "@hooks/useToastCustom";
 import { useNavigationAuth } from "@routes/useNavigationAuth";
