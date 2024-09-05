@@ -7,9 +7,9 @@ import { useState } from "react";
 import { IData, ISignUpTemplateProps, SignUpTemplate } from "./template";
 
 export function SignUp() {
-  const { navigateSignIn } = useNavigationAuth();
   const [signUpMain] = useState(new SignUpMain());
   const [loading, setLoading] = useState(false);
+  const { navigateSignIn } = useNavigationAuth();
   const { toastCustom } = useToastCustom();
 
   async function signUp(data: IData) {

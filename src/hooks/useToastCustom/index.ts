@@ -11,6 +11,8 @@ type IPlacement =
 
 function getTypeColorMessage(typeMessage: ITypeMessage_GLOBAL) {
   switch (typeMessage) {
+    case "fatal":
+      return "red.500";
     case "error":
       return "red.500";
     case "warning":

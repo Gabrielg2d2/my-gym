@@ -1,15 +1,13 @@
-import { SignIDomain } from "@domain/login/signIn/main";
 import { useNavigationAuth } from "@routes/useNavigationAuth";
-import { useState } from "react";
+import { useAuthContext } from "src/context/auth";
 import { IData, ISignInTemplateProps, SignInTemplate } from "./template";
 
 export function SignIn() {
   const { navigateSignUp } = useNavigationAuth();
-  const [signIDomain] = useState(new SignIDomain());
+  const { signIn } = useAuthContext();
 
   async function onSubmit(data: IData) {
-    const result = await signIDomain.signIn(data.email, data.password);
-    console.log("result: ", JSON.stringify(result));
+    await signIn(data);
   }
 
   const props: ISignInTemplateProps = {

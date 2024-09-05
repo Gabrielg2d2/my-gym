@@ -1,4 +1,7 @@
 import { Repository } from "./repository";
+import { IDataSignIn } from "./repository/functions/signIn";
+
+export { IDataSignIn };
 
 export class SignIDomain {
   constructor(private readonly repository = new Repository()) {}

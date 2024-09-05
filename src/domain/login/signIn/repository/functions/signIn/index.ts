@@ -3,7 +3,7 @@ import { AdapterAxios } from "@domain/infra/http/adapterAxios";
 import { IReturnDefault_GLOBAL } from "@domain/types/returnDefault";
 import { ITypeMessage_GLOBAL } from "@domain/types/typeMessage";
 
-type IDataSignIn = {
+export type IDataSignIn = {
   refresh_token: string;
   token: string;
   user: {
