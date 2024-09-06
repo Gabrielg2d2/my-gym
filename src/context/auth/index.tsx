@@ -1,5 +1,4 @@
 import { IDataSignIn, SignIDomain } from "@domain/login/signIn/main";
-import { ITypeMessage_GLOBAL } from "@domain/types/typeMessage";
 import { useToastCustom } from "@hooks/useToastCustom";
 import { createContext, ReactNode, useContext, useState } from "react";
 
@@ -25,26 +24,29 @@ const AuthContext = createContext({} as AuthContextType);
 export function AuthProvider({ children }: AuthType) {
   const [signIDomain] = useState(new SignIDomain());
   const { toastCustom } = useToastCustom();
-  const [userData, setUserData] = useState<IDataUser>(null);
+  // const [userData, setUserData] = useState<IDataUser>(null);
 
   async function signIn(data: IData) {
     const result = await signIDomain.signIn(data.email, data.password);
 
-    if (result.typeMessage !== ITypeMessage_GLOBAL.SUCCESS) {
-      return setUserData(null);
-    }
+    // if (result.typeMessage !== ITypeMessage_GLOBAL.SUCCESS) {
+    //   return setUserData(null);
+    // }
 
-    setUserData(result.data);
+    // setUserData(result.data);
 
     toastCustom(result.message, result.typeMessage);
   }
 
   function getUserData() {
-    return userData;
+    const result = signIDomain.getUserData();
+    // setUserData(result);
+    return result;
   }
 
   function signOut() {
-    setUserData(null);
+    signIDomain.signOut();
+    // setUserData(null);
   }
 
   return (
